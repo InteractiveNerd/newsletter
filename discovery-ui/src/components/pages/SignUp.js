@@ -27,26 +27,27 @@ class SignUp extends Component {
   render() {
     return (
       <div className="container">
-        <form onSubmit={this.handleSubmit}>
-          <div className="title">
-            <p>Join The List:</p>
-          </div>
-          <div className="subTitle">
-            <p>Almost Done! Please Enter Your First and Last Name.</p>
-          </div>
-          <div className="email">
-            <input id="email" value={this.state.email} onChange={this.handleChange} />
-          </div>
-          <div className="submitBtn">
-            <input type="submit" value="Submit" />
-          </div>
-          <div className="gdpr">
-            <label>
-              <input name="isGoing" type="checkbox" checked={this.state.isGoing} onChange={this.handleInputChange} />
-              I agree to receive information from Discovery Communications in accordance with the following <a href="https://www.google.com/" >Privacy Policy</a>
-            </label>
-          </div>
-        </form>
+        <div className="row">
+          <form onSubmit={this.handleSubmit}>
+            <div className="title">
+              <p>Join The List:</p>
+            </div>
+            <div className="subTitle">
+              <p>Almost Done! Please Enter Your First and Last Name.</p>
+            </div>
+            <div className="fullName">
+              <div className="fName">
+                <input type="text" id="firstName" value={this.state.firstName} onChange={this.handleChange} />
+              </div>
+              <div className="lName">
+                <input type="text" id="lastName" value={this.state.lastName} onChange={this.handleChange} />
+              </div>
+            </div>
+            <div className="submitBtn">
+              <input type="submit" value="Sign Up" />
+            </div>
+          </form>
+        </div>
       </div>
     )
   }
