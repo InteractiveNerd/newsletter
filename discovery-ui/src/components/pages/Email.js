@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-import { Formik } from 'formik';
 
 class Email extends Component {
   constructor(props) {
@@ -23,8 +22,8 @@ class Email extends Component {
     })
   }
   handleSubmit = (e) => {
-    // e.preventDefault();
-    console.log(e.value);
+    e.preventDefault();
+    console.log(this.state);
     this.props.history.push('/sign-up');
   }
   render() {
@@ -41,7 +40,7 @@ class Email extends Component {
               </div>
               <div className="form-group">
                 <div className="email">
-                  <input type="email" id="email" placeholder={this.state.emailText} value={this.state.email} onChange={this.handleChange} />
+                  <input type="email" id="email" placeholder={this.state.emailText} value={this.state.email} onChange={this.handleChange} required="1"/>
                 </div>
                 <div className="submitBtn">
                   <input type="submit" value="Submit" />

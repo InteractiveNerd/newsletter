@@ -39,10 +39,10 @@ class SignUp extends Component {
             <div className="form-group">
               <div className="fullName">
                 <div className="fName">
-                  <input type="text" id="firstName" placeholder={this.state.firstName} value={this.state.firstName} onChange={this.handleChange} />
+                  <input type="text" id="firstName" placeholder={this.state.firstName} value={this.state.firstName} onChange={this.handleChange}  required="1"/>
                 </div>
                 <div className="lName">
-                  <input type="text" id="lastName" placeholder={this.state.lastName} value={this.state.lastName} onChange={this.handleChange} />
+                  <input type="text" id="lastName" placeholder={this.state.lastName} value={this.state.lastName} onChange={this.handleChange}  required="1"/>
                 </div>
               </div>
               <div className="submitBtn">
