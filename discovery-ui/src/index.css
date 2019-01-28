@@ -133,9 +133,9 @@ input[type="checkbox"]{
 .fullName {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-gap: 5px;
+  grid-gap: 10px;
 }
-.fName input{
+.fName input, .lName input{
   width: 100%;
 }
 .container {

@@ -6,7 +6,8 @@ class Email extends Component {
     this.state = {
       firstName: 'First Name',
       lastName: 'Last Name',
-      email: 'enter email address',
+      emailText: 'enter email address',
+      email: '',
       gdpr: ''
     }
 
@@ -15,14 +16,14 @@ class Email extends Component {
   }
   
   handleChange = (e) => {
-      this.setState({
-          [e.target.id]: e.target.value
-      })
+    this.setState({
+        [e.target.id]: e.target.value
+    })
   }
   handleSumbit = (e) => {
-      e.preventDefault();
-      this.props.signUp(this.state)
-      // console.log(this.state)
+    e.preventDefault();
+    // this.props.signUp(this.state)
+    console.log(this.state)
   }
   render() {
     return (
@@ -33,10 +34,10 @@ class Email extends Component {
               <p>Join The List:</p>
             </div>
             <div className="subTitle">
-              <p><span class="aw">Sign up for</span> <span class="aw">the TLC newsletter</span></p>
+              <p><span className="aw">Sign up for</span> <span className="aw">the TLC newsletter</span></p>
             </div>
             <div className="email">
-              <input type="email" id="email" value={this.state.email} onChange={this.handleChange} />
+              <input type="email" id="email" placeholder={this.state.emailText} value={this.state.email} onChange={this.handleChange} />
             </div>
             <div className="submitBtn">
               <input type="submit" value="Next" />
@@ -44,8 +45,8 @@ class Email extends Component {
             <div className="gdpr">
               <div><input id="gdpr" name="isGoing" type="checkbox" checked={this.state.isGoing} onChange={this.handleInputChange} /></div>
               <div>
-                <label for="gdpr">
-                  <span class="aw">I agree to receive information from</span> <span class="aw">Discovery Communications in accordance</span> <span class="aw">with the following <a href="https://www.google.com/" >Privacy Policy</a></span>
+                <label htmlFor="gdpr">
+                  <span className="aw">I agree to receive information from</span> <span className="aw">Discovery Communications in accordance</span> <span className="aw">with the following <a href="https://www.google.com/" >Privacy Policy</a></span>
                 </label>
               </div>
             </div>
