@@ -243,6 +243,7 @@ span.aw { display:inline-block; }
   }
   .subTitle, .subTitleTY {
     text-align: left;
+    font-size: 24px;
   }
   .ty {
     display: flex;

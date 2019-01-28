@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
+import { Formik } from 'formik';
 
 class Email extends Component {
   constructor(props) {
@@ -22,8 +23,8 @@ class Email extends Component {
     })
   }
   handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(this.state);
+    // e.preventDefault();
+    console.log(e.value);
     this.props.history.push('/sign-up');
   }
   render() {
@@ -47,13 +48,13 @@ class Email extends Component {
                 </div>
               </div>
               <div className="gdpr">
-              <div><input id="gdpr" name="isGoing" type="checkbox" checked={this.state.isGoing} onChange={this.handleInputChange} /></div>
-              <div>
-                <label htmlFor="gdpr">
-                  <span className="aw">I agree to receive information from</span> <span className="aw">Discovery Communications in accordance</span> <span className="aw">with the following <a href="https://www.google.com/" >Privacy Policy</a></span>
-                </label>
+                <div><input id="gdpr" name="isGoing" type="checkbox" checked={this.state.isGoing} onChange={this.handleInputChange} /></div>
+                <div>
+                  <label htmlFor="gdpr">
+                    <span className="aw">I agree to receive information from</span> <span className="aw">Discovery Communications in accordance</span> <span className="aw">with the following <a href="https://www.google.com/" >Privacy Policy</a></span>
+                  </label>
+                </div>
               </div>
-            </div>
             </div>
           </form>
         </div>
