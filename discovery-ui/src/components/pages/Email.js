@@ -36,11 +36,13 @@ class Email extends Component {
             <div className="subTitle">
               <p><span className="aw">Sign up for</span> <span className="aw">the TLC newsletter</span></p>
             </div>
-            <div className="email">
-              <input type="email" id="email" placeholder={this.state.emailText} value={this.state.email} onChange={this.handleChange} />
-            </div>
-            <div className="submitBtn">
-              <input type="submit" value="Next" />
+            <div className="form-group">
+              <div className="email">
+                <input type="email" id="email" placeholder={this.state.emailText} value={this.state.email} onChange={this.handleChange} />
+              </div>
+              <div className="submitBtn">
+                <input type="submit" value="Next" />
+              </div>
             </div>
             <div className="gdpr">
               <div><input id="gdpr" name="isGoing" type="checkbox" checked={this.state.isGoing} onChange={this.handleInputChange} /></div>

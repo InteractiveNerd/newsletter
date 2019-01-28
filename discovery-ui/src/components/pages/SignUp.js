@@ -35,16 +35,18 @@ class SignUp extends Component {
             <div className="subTitle">
               <p>Almost Done! Please Enter Your First and Last Name.</p>
             </div>
-            <div className="fullName">
-              <div className="fName">
-                <input type="text" id="firstName" value={this.state.firstName} onChange={this.handleChange} />
+            <div className="form-group">
+              <div className="fullName">
+                <div className="fName">
+                  <input type="text" id="firstName" placeholder={this.state.firstName} value={this.state.firstName} onChange={this.handleChange} />
+                </div>
+                <div className="lName">
+                  <input type="text" id="lastName" placeholder={this.state.lastName} value={this.state.lastName} onChange={this.handleChange} />
+                </div>
               </div>
-              <div className="lName">
-                <input type="text" id="lastName" value={this.state.lastName} onChange={this.handleChange} />
+              <div className="submitBtn">
+                <input type="submit" value="Sign Up" />
               </div>
-            </div>
-            <div className="submitBtn">
-              <input type="submit" value="Sign Up" />
             </div>
           </form>
         </div>

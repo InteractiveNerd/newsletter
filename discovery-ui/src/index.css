@@ -102,8 +102,14 @@ body {
   margin-top: 5px;
   line-height: 14px;
 }
+.gdpr a {
+  color: #888888;
+}
 .gdpr div{
   text-align: left;
+}
+.form-group {
+  display: grid;
 }
 input {
   background: rgba(255, 255, 255, .1);
@@ -146,6 +152,7 @@ input[type="checkbox"]{
 }
 .row {
   padding: 30px;
+  margin: 0 auto;
 }
 .bodyCopy {
   color: #94AEBF;
@@ -159,4 +166,44 @@ input[type="checkbox"]{
   box-sizing: border-box;
 }
 span.aw { display:inline-block; }
+/* tablet portrait */
+@media (min-width: 768px) { 
+  .row {
+    /* justify-items: center; */
+  }
+  .form-group {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-gap:20px;
+    align-items: center;
+    margin: 0 auto;
+    max-width:627px;
+  }
+  .gdpr {
+    width: 66%;
+  }
+  span.aw { display:inline; }
+  .title {
+    font-size: 50px;
+  }
+  .subTitle {
+    font-size: 20px;
+    margin-bottom:5px;
+  }
+  .gdpr {
+    font-size: 12px;
+    margin-top: 5px;
+    line-height: 14px;
+  }
+  input[type=email], input[type=text] {
+    width: 100%;
+    font-size: 24px;
+    height: 45px;
+    padding-left: 25px;
+  }
+  input[type=submit] {
+    height: 50px;
+    font-size: 20px;
+  }
+}
 
