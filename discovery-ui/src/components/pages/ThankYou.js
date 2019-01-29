@@ -1,4 +1,8 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import TxtTitle from '../elements/TxtTitle'
+import SubTitle from '../elements/SubTitle'
+
 
 class ThankYou extends Component {
   
@@ -6,13 +10,9 @@ class ThankYou extends Component {
     return (
       <div className="container">
         <div className="row ty">
-          <div className="title">
-            <p>congratulations!</p>
-          </div>
+          <TxtTitle text={this.props.txtTitle} />
           <div className="tab-des-ty">
-            <div className="subTitleTY">
-              <p><span className="aw">Thank You For</span> <span className="aw">Signing Up!</span></p>
-            </div>
+            <SubTitle text={this.props.signUpTxt} />
             <div className="bodyCopy">
               <p>Look out for the latest news on your favorite shows.</p>
             </div>
@@ -22,5 +22,10 @@ class ThankYou extends Component {
     )
   }
 }
-
-export default ThankYou;
+const mapStateToProps = (state) => ({
+  txtTitle: state.txtTitle2,
+  emailText: state.emailText,
+  email: state.email,
+  signUpTxt: state.signUpTxt3
+})
+export default connect(mapStateToProps)(ThankYou);

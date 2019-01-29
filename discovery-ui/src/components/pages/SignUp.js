@@ -28,7 +28,7 @@ class SignUp extends Component {
           <form onSubmit={this.handleSubmit}>
             <TxtTitle text={this.props.txtTitle} />
             <div className="tab-des">
-            <SubTitle text={this.props.signUpTxt2} />
+            <SubTitle text={this.props.signUpTxt} />
             <div className="form-group">
               <div className="fullName">
                 <div className="fName">
@@ -59,6 +59,6 @@ const mapStateToProps = (state) => ({
   firstName: state.firstName,
   lastName: state.lastName,
   txtTitle: state.txtTitle,
-  signUpTxt2: state.signUpTxt2
+  signUpTxt: state.signUpTxt2
 })
 export default connect(mapStateToProps)(SignUp);

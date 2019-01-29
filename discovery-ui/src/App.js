@@ -16,7 +16,8 @@ const initState = {
   txtTitle: 'Join The List',
   txtTitle2: 'congradulations!',
   signUpTxt: 'Sign up for the TLC newsletter',
-  signUpTxt2: 'Almost Done! Please Enter Your First and Last Name.'
+  signUpTxt2: 'Almost Done! Please Enter Your First and Last Name.',
+  signUpTxt3: 'Thank You For Signing Up!'
 }
 function reducer(state = initState, action) {
   switch (action.type) {
@@ -26,8 +27,10 @@ function reducer(state = initState, action) {
       lastName: state.lastName,
       emailText: state.emailText,
       txtTitle: state.txtTitle,
+      txtTitle2: state.txtTitle2,
       signUpTxt: state.signUpTxt,
-      signUpTxt2: state.signUpTxt2
+      signUpTxt2: state.signUpTxt2,
+      signUpTxt3: state.signUpTxt3
     }
     case "DECREMENT":
     return {

@@ -232,6 +232,9 @@ span.aw { display:inline-block; }
   }
 }
 @media (min-width: 1200px) { 
+  .form-group {
+    max-width:800px;
+  }
   form {
     display: flex;
     flex-flow: row;
