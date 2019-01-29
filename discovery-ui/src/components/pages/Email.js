@@ -6,12 +6,12 @@ import SubmitBtn from '../elements/SubmitBtn'
 
 class Email extends Component {
   handleChange = (e) => {
-    // this.setState({
-    //     [e.target.id]: e.target.value
-    // })
+    this.props.dispatch({ type: "SAVE_EMAIL" , email: e.target.value })
+    // console.log(e.target.value)
   }
   handleSubmit = (e) => {
     e.preventDefault();
+    this.props.dispatch({ type: "SAVE_EMAIL" , email: this.props.email })
     console.log(this.props)
     this.props.history.push('/sign-up');
   }

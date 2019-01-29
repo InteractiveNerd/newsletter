@@ -6,20 +6,14 @@ import SubmitBtn from '../elements/SubmitBtn'
 
 class SignUp extends Component {  
   handleChange = (e) => {
-      // this.setState({
-      //     [e.target.id]: e.target.value
-      // })
-  }
-  handleBlur = (e) => {
-    // this.setState({
-    //     [e.target.id]: e.target.value
-    // })
-    console.log(e.target.value)
+    this.props.dispatch({ type: "UPDATE_NAME" , [e.target.id]: e.target.value })
+    console.log([e.target.id], e.target.value)
   }
   handleSubmit = (e) => {
-      e.preventDefault();
-      console.log(this.props)
-      this.props.history.push('/thank-you');
+    e.preventDefault();
+    console.log(this.props)
+    this.props.dispatch({ type: "SAVE_NAME" , firstName: this.props.firstName, lastName: this.props.lastName })
+    this.props.history.push('/thank-you');
   }
   render() {
     return (
@@ -32,10 +26,10 @@ class SignUp extends Component {
             <div className="form-group">
               <div className="fullName">
                 <div className="fName">
-                  <input type="text" id="firstName" placeholder={this.props.firstName} value={this.props.firstName} onChange={this.handleChange} onBlur={this.handleBlur} required="1"/>
+                  <input type="text" id="firstName" placeholder={this.props.firstName} onChange={this.handleChange} required="1"/>
                 </div>
                 <div className="lName">
-                  <input type="text" id="lastName" placeholder={this.props.lastName} value={this.props.lastName} onChange={this.handleChange} onBlur={this.handleBlur} required="1"/>
+                  <input type="text" id="lastName" placeholder={this.props.lastName} onChange={this.handleChange} required="1"/>
                 </div>
               </div>
               <SubmitBtn text="sign up" />
@@ -58,6 +52,7 @@ class SignUp extends Component {
 const mapStateToProps = (state) => ({
   firstName: state.firstName,
   lastName: state.lastName,
+  email: state.email,
   txtTitle: state.txtTitle,
   signUpTxt: state.signUpTxt2
 })
