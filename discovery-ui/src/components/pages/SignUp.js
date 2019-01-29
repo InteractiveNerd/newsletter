@@ -1,27 +1,24 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import SubTitle from '../elements/SubTitle'
+import TxtTitle from '../elements/TxtTitle'
+import SubmitBtn from '../elements/SubmitBtn'
 
-class SignUp extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      firstName: 'First Name',
-      lastName: 'Last Name',
-      email: 'enter email address',
-      gdpr: ''
-    }
-
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-  
+class SignUp extends Component {  
   handleChange = (e) => {
-      this.setState({
-          [e.target.id]: e.target.value
-      })
+      // this.setState({
+      //     [e.target.id]: e.target.value
+      // })
+  }
+  handleBlur = (e) => {
+    // this.setState({
+    //     [e.target.id]: e.target.value
+    // })
+    console.log(e.target.value)
   }
   handleSubmit = (e) => {
       e.preventDefault();
-      console.log(this.state)
+      console.log(this.props)
       this.props.history.push('/thank-you');
   }
   render() {
@@ -29,29 +26,22 @@ class SignUp extends Component {
       <div className="container">
         <div className="row">
           <form onSubmit={this.handleSubmit}>
-            <div className="title">
-              <p>Join The List</p>
-            </div>
+            <TxtTitle text={this.props.txtTitle} />
             <div className="tab-des">
-            <div className="subTitle">
-              <p>Almost Done! Please Enter Your First and Last Name.</p>
-            </div>
+            <SubTitle text={this.props.signUpTxt2} />
             <div className="form-group">
               <div className="fullName">
                 <div className="fName">
-                  <input type="text" id="firstName" placeholder={this.state.firstName} value={this.state.firstName} onChange={this.handleChange}  required="1"/>
+                  <input type="text" id="firstName" placeholder={this.props.firstName} value={this.props.firstName} onChange={this.handleChange} onBlur={this.handleBlur} required="1"/>
                 </div>
                 <div className="lName">
-                  <input type="text" id="lastName" placeholder={this.state.lastName} value={this.state.lastName} onChange={this.handleChange}  required="1"/>
+                  <input type="text" id="lastName" placeholder={this.props.lastName} value={this.props.lastName} onChange={this.handleChange} onBlur={this.handleBlur} required="1"/>
                 </div>
               </div>
-              <div className="submitBtn">
-                <input type="submit" value="Sign Up" />
-              </div>
-              
+              <SubmitBtn text="sign up" />
             </div>
               <div className="gdpr plh">
-                <div><input id="gdpr" name="isGoing" type="checkbox" checked={this.state.isGoing} onChange={this.handleInputChange} /></div>
+                <div><input id="gdpr" name="isGoing" type="checkbox" checked={this.props.isGoing} onChange={this.handleInputChange} /></div>
                 <div>
                   <label htmlFor="gdpr">
                     <span className="aw">I agree to receive information from</span> <span className="aw">Discovery Communications in accordance</span> <span className="aw">with the following <a href="https://www.google.com/" >Privacy Policy</a></span>
@@ -65,5 +55,10 @@ class SignUp extends Component {
     )
   }
 }
-
-export default SignUp;
+const mapStateToProps = (state) => ({
+  firstName: state.firstName,
+  lastName: state.lastName,
+  txtTitle: state.txtTitle,
+  signUpTxt2: state.signUpTxt2
+})
+export default connect(mapStateToProps)(SignUp);

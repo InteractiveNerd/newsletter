@@ -1,29 +1,18 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux'
+import SubTitle from '../elements/SubTitle'
+import TxtTitle from '../elements/TxtTitle'
+import SubmitBtn from '../elements/SubmitBtn'
 
 class Email extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      firstName: 'First Name',
-      lastName: 'Last Name',
-      emailText: 'enter email address',
-      email: '',
-      gdpr: ''
-    }
-
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-  
   handleChange = (e) => {
-    this.setState({
-        [e.target.id]: e.target.value
-    })
+    // this.setState({
+    //     [e.target.id]: e.target.value
+    // })
   }
   handleSubmit = (e) => {
     e.preventDefault();
-    console.log(this.state);
+    console.log(this.props)
     this.props.history.push('/sign-up');
   }
   render() {
@@ -31,23 +20,17 @@ class Email extends Component {
       <div className="container">
         <div className="row">
           <form onSubmit={this.handleSubmit} >
-            <div className="title">
-              <p>Join The List</p>
-            </div>
+            <TxtTitle text={this.props.txtTitle} />
             <div className="tab-des">
-              <div className="subTitle">
-                <p><span className="aw">Sign up for</span> <span className="aw">the TLC newsletter</span></p>
-              </div>
+              <SubTitle text={this.props.signUpTxt} />
               <div className="form-group">
                 <div className="email">
-                  <input type="email" id="email" placeholder={this.state.emailText} value={this.state.email} onChange={this.handleChange} required="1"/>
+                  <input type="email" id="email" placeholder={this.props.emailText} value={this.props.email} onChange={this.handleChange} required="1"/>
                 </div>
-                <div className="submitBtn">
-                  <input type="submit" value="Submit" />
-                </div>
+                <SubmitBtn text="Next" />
               </div>
               <div className="gdpr">
-                <div><input id="gdpr" name="isGoing" type="checkbox" checked={this.state.isGoing} onChange={this.handleInputChange} /></div>
+                <div><input id="gdpr" name="isGoing" type="checkbox" /></div>
                 <div>
                   <label htmlFor="gdpr">
                     <span className="aw">I agree to receive information from</span> <span className="aw">Discovery Communications in accordance</span> <span className="aw">with the following <a href="https://www.google.com/" >Privacy Policy</a></span>
@@ -61,4 +44,10 @@ class Email extends Component {
     )
   }
 }
-export default withRouter(Email);
+const mapStateToProps = (state) => ({
+  txtTitle: state.txtTitle,
+  emailText: state.emailText,
+  email: state.email,
+  signUpTxt: state.signUpTxt
+})
+export default connect(mapStateToProps)(Email);
