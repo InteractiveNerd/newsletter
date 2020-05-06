@@ -1,13 +1,26 @@
 import React, { useState } from 'react';
 import Title from './atoms/Title.js';
 import SubmitBtn from './atoms/SubmitBtn.js';
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
 
-function SignUp() {
-  const [form, setForm] = useState({
-    email: '',
-    firstName: '',
-    lastName: '',
-    agree: false,
+const SignUp = () => {
+  const formik = useFormik({
+    initialValues: {
+      email: '',
+      firstName: '',
+      lastName: '',
+      agree: false,
+    },
+    validationSchema: Yup.object({
+      email: Yup.string().email('Invalid emil address').required('Required'),
+      firstName: Yup.string().max(15, 'Must be 15 characters or less').required('Required'),
+      lastName: Yup.string().max(20, 'Must be 15 characters or less').required('Required'),
+      agree: Yup.boolean().required('Required').oneOf([true], 'you must except the terms'),
+    }),
+    onSubmit: (values) => {
+      console.log('submit', JSON.stringify(values, null, 2));
+    },
   });
   const [content, setContent] = useState({
     mainTitle: 'join the list',
@@ -33,10 +46,6 @@ function SignUp() {
     },
   ];
   const [currentStep, setCurrentStep] = useState(1);
-
-  const updateFields = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  };
   function handleCurrentStep(step) {
     const { data = {} } = stepsData.find((item) => item.step === step);
     setContent({
@@ -45,20 +54,15 @@ function SignUp() {
     });
     setCurrentStep(step);
     if (step === 3) {
-      submitForm();
+      formik.handleSubmit();
     }
   }
-
   const handleSubmit = (e) => {
     e.preventDefault();
     if (currentStep <= 2) {
       handleCurrentStep(currentStep + 1);
     }
   };
-
-  function submitForm() {
-    console.log('submit', form.email, form.firstName, form.lastName, form.agree);
-  }
 
   return (
     <div className="container">
@@ -67,6 +71,7 @@ function SignUp() {
           <Title text={content.mainTitle} type="title" />
           <div className="tab-des">
             <Title text={content.subTitle} type="subTitle" />
+            {formik.touched.agree && formik.errors.agree ? <div>{formik.errors.agree}</div> : null}
             <div className="form-group">
               {currentStep === 1 && (
                 <div className="email">
@@ -75,8 +80,7 @@ function SignUp() {
                     id="email"
                     name="email"
                     placeholder="enter email address"
-                    value={form.email}
-                    onChange={updateFields}
+                    {...formik.getFieldProps('email')}
                     required
                   />
                 </div>
@@ -89,8 +93,7 @@ function SignUp() {
                       id="firstName"
                       name="firstName"
                       placeholder="First Name"
-                      value={form.firstName}
-                      onChange={updateFields}
+                      {...formik.getFieldProps('firstName')}
                       required
                     />
                   </div>
@@ -100,8 +103,7 @@ function SignUp() {
                       id="lastName"
                       name="lastName"
                       placeholder="Last Name"
-                      value={form.lastName}
-                      onChange={updateFields}
+                      {...formik.getFieldProps('lastName')}
                       required
                     />
                   </div>
@@ -121,8 +123,9 @@ function SignUp() {
                     id="gdpr"
                     name="agree"
                     type="checkbox"
-                    checked={form.agree}
-                    onChange={updateFields}
+                    checked={formik.values.agree}
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
                     required
                   />
                 </div>
@@ -142,6 +145,6 @@ function SignUp() {
       </div>
     </div>
   );
-}
+};
 
 export default SignUp;
