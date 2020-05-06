@@ -10,7 +10,7 @@ const SignUp = () => {
       email: '',
       firstName: '',
       lastName: '',
-      agree: 'false',
+      agree: false,
     },
     validationSchema: Yup.object({
       email: Yup.string().email('Invalid emil address').required('Required'),
