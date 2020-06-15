@@ -71,7 +71,7 @@ const SignUp = () => {
           <Title text={content.mainTitle} type="title" />
           <div className="tab-des">
             <Title text={content.subTitle} type="subTitle" />
-            {formik.touched.agree && formik.errors.agree ? <div>{formik.errors.agree}</div> : null}
+            {/* {formik.touched.agree && formik.errors.agree ? <div>{formik.errors.agree}</div> : null} */}
             <div className="form-group">
               {currentStep === 1 && (
                 <div className="email">
@@ -131,7 +131,7 @@ const SignUp = () => {
                 </div>
                 <div>
                   <label htmlFor="gdpr">
-                    <span className="aw">I agree to receive information from</span>{' '}
+                    <span className="aw">I agree to receive information from </span>{' '}
                     <span className="aw">Discovery Communications in accordance</span>{' '}
                     <span className="aw">
                       with the following <a href="https://www.google.com/">Privacy Policy</a>
