@@ -68,6 +68,7 @@ const SignUp = () => {
     <div className="container">
       <div className="row">
         <form onSubmit={handleSubmit}>
+          <input type="hidden" name="form-name" value="signup" />
           <Title text={content.mainTitle} type="title" />
           <div className="tab-des">
             <Title text={content.subTitle} type="subTitle" />
