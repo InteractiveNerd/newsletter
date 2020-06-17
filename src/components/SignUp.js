@@ -28,7 +28,7 @@ const SignUp = () => {
       fetch('/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: encode({ 'form-name': 'signup', values }),
+        body: encode({ 'form-name': 'signup', ...values }),
       })
         .then(() => alert('Success!'))
         .catch((error) => alert(error));
