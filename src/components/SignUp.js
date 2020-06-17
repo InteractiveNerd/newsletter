@@ -79,8 +79,9 @@ const SignUp = () => {
   return (
     <div className="container">
       <div className="row">
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} data-netlify-recaptcha="true">
           <input type="hidden" name="form-name" value="signup" />
+          <div data-netlify-recaptcha="true"></div>
           <Title text={content.mainTitle} type="title" />
           <div className="tab-des">
             <Title text={content.subTitle} type="subTitle" />
