@@ -5,6 +5,11 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
 const SignUp = () => {
+  const encode = (data) => {
+    return Object.keys(data)
+      .map((key) => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
+      .join('&');
+  };
   const formik = useFormik({
     initialValues: {
       email: '',
@@ -19,7 +24,14 @@ const SignUp = () => {
       agree: Yup.boolean().required('Required').oneOf([true], 'you must except the terms'),
     }),
     onSubmit: (values) => {
-      console.log('submit', JSON.stringify(values, null, 2));
+      // console.log('submit', JSON.stringify(values, null, 2));
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: encode({ 'form-name': 'signup', values }),
+      })
+        .then(() => alert('Success!'))
+        .catch((error) => alert(error));
     },
   });
   const [content, setContent] = useState({
