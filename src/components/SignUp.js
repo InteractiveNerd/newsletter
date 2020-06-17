@@ -145,7 +145,7 @@ const SignUp = () => {
                 <div>
                   <label htmlFor="gdpr">
                     <span className="aw">I agree to receive information from </span>{' '}
-                    <span className="aw">Discovery Communications in accordance</span>{' '}
+                    <span className="aw">Interactive Nerd Communications in accordance</span>{' '}
                     <span className="aw">
                       with the following <a href="https://www.google.com/">Privacy Policy</a>
                     </span>
