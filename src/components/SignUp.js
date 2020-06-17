@@ -36,7 +36,7 @@ const SignUp = () => {
   });
   const [content, setContent] = useState({
     mainTitle: 'join the list',
-    subTitle: 'sign up for the tlc newsletter.',
+    subTitle: 'sign up for the IN newsletter.',
     submitBtn: 'next',
   });
   const stepsData = [
