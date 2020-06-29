@@ -3,7 +3,6 @@
   "version": "3.2.0",
   "private": true,
   "dependencies": {
-    "@testing-library/react": "^10.4.3",
     "formik": "^2.1.4",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
@@ -27,7 +26,10 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "@testing-library/jest-dom": "^5.11.0",
+    "@testing-library/react": "^10.4.3",
     "cypress": "^4.8.0",
+    "react-test-renderer": "^16.13.1",
     "typescript": "^3.8.3"
   }
 }
