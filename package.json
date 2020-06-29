@@ -1,6 +1,6 @@
 {
   "name": "interactive-nerd-newsletter",
-  "version": "3.1.5",
+  "version": "3.2.0",
   "private": true,
   "dependencies": {
     "@testing-library/react": "^10.4.3",
