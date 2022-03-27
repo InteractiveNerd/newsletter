@@ -27,7 +27,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "cypress": "^4.8.0",
+    "cypress": "^4.12.1",
     "typescript": "^3.8.3"
   }
 }
